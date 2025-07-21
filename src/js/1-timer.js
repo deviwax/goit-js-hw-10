@@ -8,7 +8,7 @@ const startBtn = document.querySelector('[data-start]');
 const input = document.querySelector('#datetime-picker');
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
-const minutesEl = document.querySelector('[data-minuts]');
+const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
 let userSelectedDate = null;
@@ -47,7 +47,7 @@ startBtn.addEventListener('click', () => {
 
     timerId = setInterval(() => {
         const now = new Date();
-        const diff = userSelectorDate - now;
+        const diff = userSelectedDate - now;
 
         if (diff <= 0) {
             clearInterval(timerId);
@@ -62,13 +62,13 @@ startBtn.addEventListener('click', () => {
 });
 
 function updateTimerDisplay({ days, hours, minutes, seconds }) {
-    daysEl.textContent = addLadingZero(days);
-    hoursEl.textContent = addLadingZero(hours);
-    minutesEl.textContent = addLadingZero(minutes);
-    secondsEl.textContent = addLadingZero(seconds);
+    daysEl.textContent = addLeadingZero(days);
+    hoursEl.textContent = addLeadingZero(hours);
+    minutesEl.textContent = addLeadingZero(minutes);
+    secondsEl.textContent = addLeadingZero(seconds);
 }
 
-function addLadingZero(value) {
+function addLeadingZero(value) {
     return String(value).padStart(2, '0');
 }
 
